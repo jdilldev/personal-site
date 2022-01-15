@@ -1,25 +1,24 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
+  const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+  const ref = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = ref.current
+    const context = canvas!.getContext('2d')
+    //Our first draw
+    context!.fillStyle = 'cornflowerblue'
+    context!.fillRect(0, 0, context!.canvas.width, context!.canvas.height)
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <canvas id='canvas' width={1000} height={700} ref={ref} ></canvas>
+    </>
   );
 }
 
