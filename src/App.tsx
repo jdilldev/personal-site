@@ -1,23 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { About } from './About';
 import './App.scss';
+import { Projects } from './Projects';
 
 function App() {
-  const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-  const ref = useRef<HTMLCanvasElement>(null)
-
-  useEffect(() => {
-    const canvas = ref.current
-    const context = canvas!.getContext('2d')
-    //Our first draw
-    context!.fillStyle = 'cornflowerblue'
-    context!.fillRect(0, 0, context!.canvas.width, context!.canvas.height)
-  }, [])
-
-
+  const roles = ['programmer', 'human-mom', 'wife', 'learner', 'silly', 'empowerer', 'TBD']
   return (
     <>
-      <canvas id='canvas' width={1000} height={700} ref={ref} ></canvas>
+      <section className='title__container'>
+        <svg width='700' viewBox="0 -10 240 35">
+          <text fontSize={'2em'} x="0" y="20" fontFamily='Neonderthaw' >Welcome,<tspan fill={'orange'} fontFamily='Staatliches'>I'm Jasmine</tspan></text>
+        </svg>
+        <h2 className={'typing-demo'} style={{ fontFamily: 'Major Mono Display' }}>Programmer.</h2>
+      </section>
+      <About />
+      <Projects />
     </>
   );
 }
